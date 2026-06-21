@@ -10,4 +10,9 @@ parameters:
         - database/
         - routes/
 
+    excludePaths:
+        - storage/framework/views/*
+        - resources/views/*.test.php
+        - resources/views/**/*.test.php
+
     level: 7
