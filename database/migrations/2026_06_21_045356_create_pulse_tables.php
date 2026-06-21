@@ -3,6 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Laravel\Pulse\Support\PulseMigration;
+use RuntimeException;
 
 return new class extends PulseMigration
 {
@@ -20,11 +21,7 @@ return new class extends PulseMigration
             $table->unsignedInteger('timestamp');
             $table->string('type');
             $table->mediumText('key');
-            match ($this->driver()) {
-                'mariadb', 'mysql' => $table->char('key_hash', 16)->charset('binary')->virtualAs('unhex(md5(`key`))'),
-                'pgsql'            => $table->uuid('key_hash')->storedAs('md5("key")::uuid'),
-                'sqlite'           => $table->string('key_hash'),
-            };
+            $this->addKeyHashColumn($table);
             $table->mediumText('value');
 
             $table->index('timestamp'); // For trimming...
@@ -37,11 +34,7 @@ return new class extends PulseMigration
             $table->unsignedInteger('timestamp');
             $table->string('type');
             $table->mediumText('key');
-            match ($this->driver()) {
-                'mariadb', 'mysql' => $table->char('key_hash', 16)->charset('binary')->virtualAs('unhex(md5(`key`))'),
-                'pgsql'            => $table->uuid('key_hash')->storedAs('md5("key")::uuid'),
-                'sqlite'           => $table->string('key_hash'),
-            };
+            $this->addKeyHashColumn($table);
             $table->bigInteger('value')->nullable();
 
             $table->index('timestamp'); // For trimming...
@@ -56,11 +49,7 @@ return new class extends PulseMigration
             $table->unsignedMediumInteger('period');
             $table->string('type');
             $table->mediumText('key');
-            match ($this->driver()) {
-                'mariadb', 'mysql' => $table->char('key_hash', 16)->charset('binary')->virtualAs('unhex(md5(`key`))'),
-                'pgsql'            => $table->uuid('key_hash')->storedAs('md5("key")::uuid'),
-                'sqlite'           => $table->string('key_hash'),
-            };
+            $this->addKeyHashColumn($table);
             $table->string('aggregate');
             $table->decimal('value', 20, 2);
             $table->unsignedInteger('count')->nullable();
@@ -80,5 +69,17 @@ return new class extends PulseMigration
         Schema::dropIfExists('pulse_values');
         Schema::dropIfExists('pulse_entries');
         Schema::dropIfExists('pulse_aggregates');
+    }
+
+    protected function addKeyHashColumn(Blueprint $table): void
+    {
+        $driver = $this->driver();
+
+        match ($driver) {
+            'mariadb', 'mysql' => $table->char('key_hash', 16)->charset('binary')->virtualAs('unhex(md5(`key`))'),
+            'pgsql'            => $table->uuid('key_hash')->storedAs('md5("key")::uuid'),
+            'sqlite'           => $table->string('key_hash'),
+            default            => throw new RuntimeException("Pulse does not support the [{$driver}] database driver."),
+        };
     }
 };

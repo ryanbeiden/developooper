@@ -22,9 +22,11 @@
                         <flux:sidebar.item icon="activity" :href="route('pulse')" target="_blank">
                             {{ __('Pulse') }}
                         </flux:sidebar.item>
-                        <flux:sidebar.item icon="telescope" :href="route('telescope')" target="_blank">
-                            {{ __('Telescope') }}
-                        </flux:sidebar.item>
+                        @if (Route::has('telescope'))
+                            <flux:sidebar.item icon="telescope" :href="route('telescope')" target="_blank">
+                                {{ __('Telescope') }}
+                            </flux:sidebar.item>
+                        @endif
                     </flux:sidebar.group>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
