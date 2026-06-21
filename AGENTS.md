@@ -17,7 +17,6 @@ This application is a Laravel application and its main Laravel ecosystems packag
 - laravel/pulse (PULSE) - v1
 - livewire/flux (FLUXUI_FREE) - v2
 - livewire/livewire (LIVEWIRE) - v4
-- livewire/volt (VOLT) - v1
 - larastan/larastan (LARASTAN) - v3
 - laravel/boost (BOOST) - v2
 - laravel/mcp (MCP) - v0
@@ -165,15 +164,6 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 - Livewire allow to build dynamic, reactive interfaces in PHP without writing JavaScript.
 - You can use Alpine.js for client-side interactions instead of JavaScript frameworks.
 - Keep state server-side so the UI reflects it. Validate and authorize in actions as you would in HTTP requests.
-
-=== volt/core rules ===
-
-# Livewire Volt
-
-- Single-file Livewire components: PHP logic and Blade templates in one file.
-- Always check existing Volt components to determine functional vs class-based style.
-- IMPORTANT: Always use `search-docs` tool for version-specific Volt documentation and updated code examples.
-- IMPORTANT: Activate `volt-development` every time you're working with a Volt or single-file component-related task.
 
 === pint/core rules ===
 
