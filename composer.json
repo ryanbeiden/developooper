@@ -8,7 +8,7 @@
     "repositories": [
         {
             "type": "path",
-            "url": "../../workspace/artifacts-php-sdk",
+            "url": "../../workspace/projects/artifacts-php-sdk",
             "options": {
                 "symlink": true
             }
