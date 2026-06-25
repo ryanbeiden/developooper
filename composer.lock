@@ -5977,16 +5977,16 @@
         },
         {
             "name": "ryanbeiden/artifactsmmo-php",
-            "version": "1.0.0",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ryanbeiden/artifactsmmo-php.git",
-                "reference": "0dabb71729084079d2acca526cfe4288b75c6a3c"
+                "reference": "3f5a76062242c5f47a4c2801becda929ceb37dba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ryanbeiden/artifactsmmo-php/zipball/0dabb71729084079d2acca526cfe4288b75c6a3c",
-                "reference": "0dabb71729084079d2acca526cfe4288b75c6a3c",
+                "url": "https://api.github.com/repos/ryanbeiden/artifactsmmo-php/zipball/3f5a76062242c5f47a4c2801becda929ceb37dba",
+                "reference": "3f5a76062242c5f47a4c2801becda929ceb37dba",
                 "shasum": ""
             },
             "require": {
@@ -6004,35 +6004,34 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "ArtifactsMmo\\": "/"
+                    "ArtifactsMmo\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "unlicense"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "OpenAPI",
-                    "homepage": "https://openapi-generator.tech"
+                    "name": "Ryan Beiden",
+                    "homepage": "https://ryanbeiden.com",
+                    "role": "Developer"
                 }
             ],
-            "description": "Artifacts is an API-based MMO game. This is a PHP SDK for the existing OpenAPI Schema",
-            "homepage": "https://openapi-generator.tech",
+            "description": "A type-safe PHP SDK for the Artifacts MMO game API.",
+            "homepage": "https://github.com/ryanbeiden/artifactsmmo-php",
             "keywords": [
-                "api",
+                "API-Client",
+                "artifacts-mmo",
                 "openapi",
-                "openapi-generator",
-                "openapitools",
                 "php",
-                "rest",
                 "sdk"
             ],
             "support": {
                 "issues": "https://github.com/ryanbeiden/artifactsmmo-php/issues",
                 "source": "https://github.com/ryanbeiden/artifactsmmo-php/tree/v1.0.0"
             },
-            "time": "2026-06-25T15:14:58+00:00"
+            "time": "2026-06-25T16:06:11+00:00"
         },
         {
             "name": "ryangjchandler/blade-capture-directive",
