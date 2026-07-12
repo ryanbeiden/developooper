@@ -26,6 +26,7 @@ class ArtifactsPanelProvider extends PanelProvider
             ->brandName('Artifacts')
             ->id('artifacts')
             ->path('artifacts')
+            ->viteTheme('resources/css/filament/artifacts/theme.css')
             ->login()
             ->colors([
                 'primary' => Color::Emerald,
