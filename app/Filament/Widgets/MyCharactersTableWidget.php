@@ -134,13 +134,13 @@ class MyCharactersTableWidget extends TableWidget
 
     public function checkCharacterBatch(): void
     {
-        if (!$this->characterBatchId) {
+        if (! $this->characterBatchId) {
             return;
         }
 
         $batch = Bus::findBatch($this->characterBatchId);
 
-        if (!$batch) {
+        if (! $batch) {
             return;
         }
 
