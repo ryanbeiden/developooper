@@ -2,6 +2,7 @@
 
 namespace App\Filament\Widgets;
 
+use App\Filament\Tables\Columns\ActionStatusColumn;
 use App\Jobs\Artifacts\GenerateCharactersJob;
 use App\Models\Artifacts\Character;
 use Filament\Actions\Action;
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Bus;
 
 class MyCharactersTableWidget extends TableWidget
 {
-    protected static ?string $heading = 'My Characters';
+    protected static ?string $heading = '';
 
     public ?string $characterBatchId = null;
 
@@ -34,28 +35,54 @@ class MyCharactersTableWidget extends TableWidget
                     ->state(fn (Character $character) => $character->skinUrl()),
 
                 TextColumn::make('name')
-                    ->label('Character'),
+                    ->label('My Characters'),
 
                 TextColumn::make('level')
                     ->badge()
-                    ->color('info'),
+                    ->color('info')
+                    ->alignCenter(),
+
+                TextColumn::make('mining_level')
+                    ->label('Mining')
+                    ->badge()
+                    ->color('gray')
+                    ->alignCenter(),
+
+                TextColumn::make('woodcutting_level')
+                    ->label('Woodcutting')
+                    ->badge()
+                    ->color('gray')
+                    ->alignCenter(),
+
+                TextColumn::make('fishing_level')
+                    ->label('Fishing')
+                    ->badge()
+                    ->color('gray')
+                    ->alignCenter(),
+
+                TextColumn::make('alchemy_level')
+                    ->label('Alchemy')
+                    ->badge()
+                    ->color('gray')
+                    ->alignCenter(),
 
                 TextColumn::make('xp')
                     ->label('Experience')
-                    ->getStateUsing(fn (Character $character) => $character->currentXpOutOfTotal()),
+                    ->formatStateUsing(fn (Character $character) => $character->currentXpOutOfTotal()),
 
                 TextColumn::make('gold')
                     ->numeric()
                     ->icon('phosphor-currency-circle-dollar-duotone')
                     ->iconColor('warning'),
 
-                TextColumn::make('cooldown')
-                    ->label('Status')
+                TextColumn::make('layer')
+                    ->formatStateUsing(fn (string $state) => ucfirst($state))
                     ->badge()
-                    ->alignEnd()
-                    ->formatStateUsing(fn ($state) => $state > 0 ? "Cooldown ({$state}s)" : 'Idle')
-                    ->color(fn ($state) => $state > 0 ? 'danger' : 'primary'),
+                    ->color('info'),
+
+                ActionStatusColumn::make('cooldown')->label('Status')->alignEnd(),
             ])
+            ->deferLoading()
             ->paginated(false)
             ->emptyStateHeading('No Characters')
             ->emptyStateDescription('Create your characters, then they will appear here.')
@@ -107,13 +134,13 @@ class MyCharactersTableWidget extends TableWidget
 
     public function checkCharacterBatch(): void
     {
-        if (! $this->characterBatchId) {
+        if (!$this->characterBatchId) {
             return;
         }
 
         $batch = Bus::findBatch($this->characterBatchId);
 
-        if (! $batch) {
+        if (!$batch) {
             return;
         }
 

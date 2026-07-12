@@ -7,13 +7,15 @@ use ArtifactsMmo\Api\MyCharactersApi;
 use ArtifactsMmo\Model\AddCharacterSchema;
 use ArtifactsMmo\Model\CharacterSchema;
 use ArtifactsMmo\Model\ErrorResponseSchema;
+use Carbon\Carbon;
 use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
- * @property int $xp
- * @property int $max_xp
+ * @property int    $xp
+ * @property int    $max_xp
  * @property string $skin
+ * @property string $cooldown_expiration
  */
 class Character extends ArtifactsModel
 {
@@ -36,7 +38,7 @@ class Character extends ArtifactsModel
 
             $this->forceFill(static::attributesFromSchema($createdCharacter, CharacterSchema::class));
 
-            $this->exists = true;
+            $this->exists             = true;
             $this->wasRecentlyCreated = true;
             $this->syncOriginal();
 
@@ -83,11 +85,16 @@ class Character extends ArtifactsModel
 
     public function currentXpOutOfTotal(): string
     {
-        return number_format($this->xp).' / '.number_format($this->max_xp);
+        return number_format($this->xp) . ' / ' . number_format($this->max_xp);
     }
 
     public function skinUrl(): string
     {
-        return url('/images/skins/'.$this->skin.'.png');
+        return url('/images/skins/' . $this->skin . '.png');
+    }
+
+    public function isInCooldown(): bool
+    {
+        return Carbon::parse($this->cooldown_expiration)->greaterThanOrEqualTo(now());
     }
 }
