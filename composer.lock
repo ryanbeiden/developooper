@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ae0985743f37ef87cd98837cae31209f",
+    "content-hash": "6ac027b23983b3ead84524e0cccf854c",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -271,6 +271,60 @@
             "time": "2026-05-25T20:34:43+00:00"
         },
         {
+            "name": "calebporzio/sushi",
+            "version": "v2.5.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/calebporzio/sushi.git",
+                "reference": "ef71a031f78a80b0ed82ce51fc5b648c01145281"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/calebporzio/sushi/zipball/ef71a031f78a80b0ed82ce51fc5b648c01145281",
+                "reference": "ef71a031f78a80b0ed82ce51fc5b648c01145281",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pdo_sqlite": "*",
+                "ext-sqlite3": "*",
+                "illuminate/database": "^5.8 || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0 || ^12.0 || ^13.0",
+                "illuminate/support": "^5.8 || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0 || ^12.0 || ^13.0",
+                "php": "^7.1.3|^8.0"
+            },
+            "require-dev": {
+                "doctrine/dbal": "^2.9 || ^3.1.4",
+                "orchestra/testbench": "3.8.* || 3.9.* || ^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0",
+                "phpunit/phpunit": "^7.5 || ^8.4 || ^9.0 || ^10.0 || ^11.0 || ^12.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Sushi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Caleb Porzio",
+                    "email": "calebporzio@gmail.com"
+                }
+            ],
+            "description": "Eloquent's missing \"array\" driver.",
+            "support": {
+                "source": "https://github.com/calebporzio/sushi/tree/v2.5.4"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/calebporzio",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-02-21T02:53:22+00:00"
+        },
+        {
             "name": "carbonphp/carbon-doctrine-types",
             "version": "3.2.0",
             "source": {
@@ -502,17 +556,17 @@
             "time": "2026-03-20T21:10:52+00:00"
         },
         {
-            "name": "codeat3/blade-fluentui-system-icons",
-            "version": "1.35.0",
+            "name": "codeat3/blade-phosphor-icons",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/codeat3/blade-fluentui-system-icons.git",
-                "reference": "591b26185bc7a49d59888ecf9cbd183c0cffcf24"
+                "url": "https://github.com/codeat3/blade-phosphor-icons.git",
+                "reference": "39a40c44908729d20f03f9903f4abcc165b1b02b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeat3/blade-fluentui-system-icons/zipball/591b26185bc7a49d59888ecf9cbd183c0cffcf24",
-                "reference": "591b26185bc7a49d59888ecf9cbd183c0cffcf24",
+                "url": "https://api.github.com/repos/codeat3/blade-phosphor-icons/zipball/39a40c44908729d20f03f9903f4abcc165b1b02b",
+                "reference": "39a40c44908729d20f03f9903f4abcc165b1b02b",
                 "shasum": ""
             },
             "require": {
@@ -530,13 +584,13 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "Codeat3\\BladeFluentUiSystemIcons\\BladeFluentUiSystemIconsServiceProvider"
+                        "Codeat3\\BladePhosphorIcons\\BladePhosphorIconsServiceProvider"
                     ]
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Codeat3\\BladeFluentUiSystemIcons\\": "src"
+                    "Codeat3\\BladePhosphorIcons\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -553,17 +607,16 @@
                     "homepage": "https://driesvints.com"
                 }
             ],
-            "description": "A package to easily make use of FluentUI System Icons in your Laravel Blade views.",
-            "homepage": "https://github.com/codeat3/blade-fluentui-system-icons",
+            "description": "A package to easily make use of \"Phosphor Icons\" in your Laravel Blade views.",
+            "homepage": "https://github.com/codeat3/blade-phosphor-icons",
             "keywords": [
-                "FluentUI",
                 "blade",
-                "icons",
-                "laravel"
+                "laravel",
+                "phosphor-icons"
             ],
             "support": {
-                "issues": "https://github.com/codeat3/blade-fluentui-system-icons/issues",
-                "source": "https://github.com/codeat3/blade-fluentui-system-icons/tree/1.35.0"
+                "issues": "https://github.com/codeat3/blade-phosphor-icons/issues",
+                "source": "https://github.com/codeat3/blade-phosphor-icons/tree/2.4.0"
             },
             "funding": [
                 {
@@ -571,7 +624,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-03-21T12:39:53+00:00"
+            "time": "2026-03-21T13:21:02+00:00"
         },
         {
             "name": "danharrin/date-format-converter",

@@ -36,8 +36,8 @@ class ArtifactsPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([])
             ->userMenuItems([
-                Action::make('Back to Dashboard')
-                    ->label('Dashboard')
+                Action::make('Back to Home')
+                    ->label('Home')
                     ->url('/dashboard')
                     ->icon('heroicon-o-arrow-left-on-rectangle'),
                 'logout' => fn (Action $action) => $action->hidden(true),
